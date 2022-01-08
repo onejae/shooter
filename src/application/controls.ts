@@ -16,7 +16,7 @@ class GameController {
 
     init(el: HTMLElement): void {
         this.player.init()
-        this.renderer.init()
+        this.renderer.init(el)
         this.terrain.init()
 
         const vertices = this.generateTerrain()
