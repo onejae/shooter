@@ -1,4 +1,4 @@
-import { GameObject, Point, Drawable, Movable } from './object.js'
+import { GameObject, Point, Drawable, Movable } from './object'
 
 export class Player extends GameObject implements Drawable, Movable {
     loadMesh(meshData: Float32Array): boolean {

@@ -3,10 +3,10 @@
   "scripts": {
     "start": "lite-server"
   },
-  "dependencies": {
-    "@types/three": "^0.135.0"
-  },
   "devDependencies": {
+    "@types/three": "^0.136.0",
+    "snowpack": "^3.8.8",
+    "three": "^0.136.0",
     "typescript": "^4.5.4"
   }
 }

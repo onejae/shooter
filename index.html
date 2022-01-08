@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
+    <head> </head>
     <body>
         <div id="game-screen" />
-        <!-- <script type="module" src="./dist/main.js"></script> -->
         <script type="module">
-            import GameController from './dist/application/controls.js'
+            import GameController from './dist/application/controls'
             const gameController = new GameController()
 
             gameController.init(document.getElementById('game-screen'))

@@ -1,4 +1,4 @@
-import { Drawable, GameObject, Point } from './object.js'
+import { Drawable, GameObject, Point } from './object'
 
 export class Terrain extends GameObject implements Drawable {
     loadMesh(meshData: Float32Array): boolean {

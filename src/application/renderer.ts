@@ -27,5 +27,7 @@ export class Renderer {
         this.drawables.push(drawable)
     }
 
-    startRender(): void {}
+    startRender(): void {
+        console.log('start rendering')
+    }
 }

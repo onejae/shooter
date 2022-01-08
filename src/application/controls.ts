@@ -1,7 +1,7 @@
-import { Player } from '../entities/player.js'
-import { Renderer } from './renderer.js'
-import { Terrain } from '../entities/terrain.js'
-import { Point } from '../entities/object.js'
+import { Player } from '../entities/player'
+import { Renderer } from './renderer'
+import { Terrain } from '../entities/terrain'
+import { Point } from '../entities/object'
 
 class GameController {
     player: Player
@@ -12,9 +12,11 @@ class GameController {
         this.player = new Player()
         this.renderer = new Renderer()
         this.terrain = new Terrain()
+        console.log(this.player)
     }
 
     init(el: HTMLElement): void {
+        console.log('okay')
         this.player.init()
         this.renderer.init(el)
         this.terrain.init()
