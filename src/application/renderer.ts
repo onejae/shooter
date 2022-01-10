@@ -3,31 +3,56 @@ import { Drawable } from '../entities/object'
 
 export class Renderer {
     drawables: Array<Drawable>
+    scene: THREE.Scene
+    camera: THREE.Camera
+    renderer: THREE.WebGLRenderer
 
     constructor() {
         this.drawables = new Array<Drawable>()
     }
 
     init(el: HTMLElement): void {
-        const scene = new THREE.Scene()
-        const camera = new THREE.PerspectiveCamera(
+        this.scene = new THREE.Scene()
+        this.camera = new THREE.PerspectiveCamera(
             75,
             window.innerWidth / window.innerHeight,
-            0.1,
-            1000,
+            1,
+            500,
         )
+        this.camera.position.set(0, 0, 100)
+        this.camera.lookAt(0, 0, 0)
 
-        const renderer = new THREE.WebGLRenderer()
+        this.renderer = new THREE.WebGLRenderer()
 
-        renderer.setSize(window.innerWidth, window.innerHeight)
-        el.appendChild(renderer.domElement)
+        this.renderer.setSize(window.innerWidth, window.innerHeight)
+        el.appendChild(this.renderer.domElement)
     }
 
     addDrawable(drawable: Drawable) {
         this.drawables.push(drawable)
+
+        const points = []
+
+        points.push(new THREE.Vector3(-10, 0, 0))
+        points.push(new THREE.Vector3(0, 10, 0))
+        points.push(new THREE.Vector3(10, 0, 0))
+
+        const geometry = new THREE.BufferGeometry().setFromPoints(points)
+
+        const material = new THREE.LineBasicMaterial({ color: 0xff00ff })
+
+        const line = new THREE.Line(geometry, material)
+
+        this.scene.add(line)
+        this.renderer.render(this.scene, this.camera)
     }
 
     startRender(): void {
-        console.log('start rendering')
+        requestAnimationFrame(this.render.bind(this))
+    }
+
+    render(taskStartTime: Number): void {
+        this.renderer.render(this.scene, this.camera)
+        requestAnimationFrame(this.render.bind(this))
     }
 }

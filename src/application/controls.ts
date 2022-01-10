@@ -39,6 +39,9 @@ class GameController {
     }
 
     startGame(): void {
+        this.renderer.addDrawable(this.terrain)
+        this.renderer.addDrawable(this.player)
+
         this.renderer.startRender()
     }
 }
