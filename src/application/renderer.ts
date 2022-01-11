@@ -19,7 +19,7 @@ export class Renderer {
             1,
             500,
         )
-        this.camera.position.set(0, 0, 100)
+        this.camera.position.set(0, 0, 200)
         this.camera.lookAt(0, 0, 0)
 
         this.renderer = new THREE.WebGLRenderer()
@@ -33,17 +33,21 @@ export class Renderer {
 
         const points = []
 
-        points.push(new THREE.Vector3(-10, 0, 0))
-        points.push(new THREE.Vector3(0, 10, 0))
-        points.push(new THREE.Vector3(10, 0, 0))
+        drawable.getPrimitives().map((v) => {
+            console.log(v)
+        })
+        points.push(new THREE.Vector3(-100, 0, 0))
+        points.push(new THREE.Vector3(30, 0, 0))
+        points.push(new THREE.Vector3(30, 30, 0))
 
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
 
-        const material = new THREE.LineBasicMaterial({ color: 0xff00ff })
+        const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa })
 
-        const line = new THREE.Line(geometry, material)
+        // const line = new THREE.Line(geometry, material)
+        const mesh = new THREE.Mesh(geometry, material)
 
-        this.scene.add(line)
+        this.scene.add(mesh)
         this.renderer.render(this.scene, this.camera)
     }
 

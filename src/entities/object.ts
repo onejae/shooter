@@ -4,7 +4,7 @@ abstract class GameObject {
     init(): void {}
 
     // vertex-vertex
-    abstract loadMesh(meshData: Float32Array): boolean
+    abstract loadMesh(meshData: Array<[number, number, number]>): boolean
 }
 
 class Point {
